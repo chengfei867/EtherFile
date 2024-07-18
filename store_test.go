@@ -15,14 +15,14 @@ func Test_store(t *testing.T) {
 	opts := StoreOpts{
 		PathTransformFunc: SHA1PathTransformFunc,
 	}
-	key := "test_file_path"
+	key := "my_file"
 	s := NewStore(opts)
 	data := bytes.NewReader([]byte("some bytes"))
 	err := s.writeStream(key, data)
 	if err != nil {
 		t.Error(err)
 	}
-	read, err := s.Read(key)
+	_, read, err := s.Read(key)
 	if err != nil {
 		t.Error(err)
 	}

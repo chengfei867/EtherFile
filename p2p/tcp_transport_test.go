@@ -6,6 +6,8 @@ import (
 )
 
 func TestNewTCPTransport(t *testing.T) {
-	tcpT := NewTCPTransport(":8080")
+	tcpT := NewTCPTransport(TCPTransportOpts{
+		ListenAddr: ":8080",
+	})
 	assert.Nil(t, tcpT.ListenAndAccept())
 }
